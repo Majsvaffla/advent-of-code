@@ -1,0 +1,9 @@
+#! /bin/bash
+
+set -euo pipefail
+
+current_day="$(date +%-d)"
+day="${1:-$current_day}"
+year="$(date +%Y)"
+aoc_root="$(dirname $0)/.."
+cp -r "$aoc_root/skel" "$aoc_root/$year/$day"
