@@ -1,4 +1,16 @@
+from __future__ import annotations
+
+import argparse
 from pathlib import Path
 
-with Path("input.txt").open() as f:
-    input_lines = f.readlines()
+parser = argparse.ArgumentParser()
+parser.add_argument("file_path", help="File path to read input from.")
+args = parser.parse_args()
+
+
+def get_input_lines(input_file: Path):
+    with Path(input_file).open() as f:
+        return f.readlines()
+
+
+input_lines = get_input_lines(args.file_path)
