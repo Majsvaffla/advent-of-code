@@ -5,5 +5,11 @@ set -euo pipefail
 current_day="$(date +%-d)"
 day="${1:-$current_day}"
 year="$(date +%Y)"
-aoc_root="$(dirname $0)/.."
-cp -r "$aoc_root/skel" "$aoc_root/$year/$day"
+script_root="$(dirname $0)"
+aoc_root="$(realpath $script_root/..)"
+new_day="$aoc_root/$year/$day"
+if [ -d $new_day ]; then
+    >&2 echo Not copying skel because $new_day already exists.
+    exit 1
+fi
+cp -r "$aoc_root/skel" $new_day
