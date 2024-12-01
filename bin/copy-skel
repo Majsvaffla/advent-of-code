@@ -5,6 +5,7 @@ set -euo pipefail
 current_day="$(date +%-d)"
 day="${1:-$current_day}"
 year="$(date +%Y)"
+mkdir -p "$year"
 script_root="$(dirname $0)"
 aoc_root="$(realpath $script_root/..)"
 new_day="$aoc_root/$year/$day"
